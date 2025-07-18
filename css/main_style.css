@@ -1,4 +1,7 @@
+:root {
+    --bg-color:  #CADBC0;
+}
 
 body {
-  background-color: coral !important;
+  background-color: var(--bg-color) !important;
 }
