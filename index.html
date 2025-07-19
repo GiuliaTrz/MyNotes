@@ -14,7 +14,7 @@
     <!--Top command bar-->
     <div id="topBar" class="container text-center">
       <div class="d-flex justify-content-end">
-        <button id="btnAddNote" class="btn btn-link"><i class="bi bi-plus-square"></i></button>
+        <button id="btnAddNote" class="btn btn-link"><i class="bi bi-plus-circle"></i></button>
       </div>
     </div>
     
@@ -22,20 +22,20 @@
     <h1 id="appTitle" class="mx-auto">My Notes</h1>
 
     <!-- Notes container -->
-    <div id="notesBox" class="text-start container px-5 mt-5">
-      <div id="note1" class="d-flex justify-content-between py-2 border-bottom note-item">
+    <div id="notesBox" class="text-start container px-5 mt-5 d-none">
+      <div id="note1" class="d-flex justify-content-between py-2 note-item">
         <span class="spnNoteTitle">TITOLO DELLA NOTA</span>
         <span class="spnNoteDate">19-07-2025</span>
       </div>
-      <div id="note2" class="d-flex justify-content-between py-2 border-bottom note-item">
+      <div id="note2" class="d-flex justify-content-between py-2 note-item">
         <span class="spnNoteTitle">TITOLO DELLA NOTA</span>
         <span class="spnNoteDate">19-07-2025</span>
       </div>
-      <div id="note3" class="d-flex justify-content-between py-2 border-bottom note-item">
+      <div id="note3" class="d-flex justify-content-between py-2 note-item">
         <span class="spnNoteTitle">TITOLO DELLA NOTA</span>
         <span class="spnNoteDate">19-07-2025</span>
       </div>
-      <div id="note4" class="d-flex justify-content-between py-2 border-bottom note-item">
+      <div id="note4" class="d-flex justify-content-between py-2 note-item">
         <span class="spnNoteTitle">TITOLO DELLA NOTA</span>
         <span class="spnNoteDate">19-07-2025</span>
       </div>
@@ -49,14 +49,14 @@
     </div>
     
     <!-- Editor -->
-    <div id="editorBox" class="container-sm d-none">
+    <div id="editorBox" class="container-sm">
         <!--Top bar controls-->
         <div class="d-flex justify-content-between">
-            <button id="btnHome" class="btn btn-link"><i class="bi bi-box-arrow-down"></i>Home</button>
+            <button id="btnHome" class="btn btn-link"><i class="bi bi-house"></i></button>
           <div>
-              <button id="btnNewNote" class="btn btn-link"><i class="bi bi-box-arrow-down"></i>New note</button>
-              <button id="btnDelete" class="btn btn-link"><i class="bi bi-box-arrow-down"></i>Delete</button>
-              <button id="btnExport" class="btn btn-link"><i class="bi bi-box-arrow-down"></i>Export</button>
+              <button id="btnNewNote" class="btn btn-link"><i class="bi bi-plus-circle"></i></button>
+              <button id="btnDelete" class="btn btn-link"><i class="bi bi-trash3"></i></button>
+              <button id="btnExport" class="btn btn-link"><i class="bi bi-box-arrow-down"></i></button>
           </div>    
         </div>
         

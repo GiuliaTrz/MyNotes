@@ -1,7 +1,13 @@
 :root {
     --bg-color:  #CADBC0;
+    --textnote-color:  #413620;
 }
 
 body {
   background-color: var(--bg-color) !important;
+}
+
+.note-item{
+    color: var(--textnote-color);
+    border-bottom: 1px solid var(--textnote-color)!important;
 }
