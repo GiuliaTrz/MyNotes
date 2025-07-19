@@ -8,6 +8,7 @@ const btnExportAll = document.getElementById("btnExportAll");
 /*
     Editor controls
 */
+const editorBox = document.getElementById("editorBox");
 const btnHome = document.getElementById("btnHome");
 const btnNewNote = document.getElementById("btnNewNote");
 const btnDelete  = document.getElementById("btnDelete");
@@ -24,7 +25,8 @@ function formatDate(date){
     BUTTON EVENTS
 */
 function onbtnAddNoteClicked(){
-    alert("New note button clicked!");
+    editorBox.classList.remove("d-none"); // Show the editor
+    notesBox.classList.add("d-none"); // Hide the notes list
 }
 
 function onbtnExportAllClicked(){
@@ -32,9 +34,9 @@ function onbtnExportAllClicked(){
 }
 
 // - Editor buttons
-
 function onbtnHomeClicked(){
-    alert("Home!");
+    editorBox.classList.add("d-none"); //Hide the editor
+    notesBox.classList.remove("d-none") // Show the notes list
 }
 
 function onbtnNewNoteClicked(){
