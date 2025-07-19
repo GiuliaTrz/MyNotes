@@ -33,17 +33,21 @@
       </div>
     </div>
     
-<!-- Editor -->
+    <!-- Editor -->
     <div id="editorBox" class="container-sm">
-        100% wide until small breakpoint
+        <!--Top bar controls-->
         <div class="d-flex justify-content-between">
             <button id="btnHome" class="btn btn-link"><i class="bi bi-box-arrow-down"></i>Home</button>
-        <div>
-            <button id="btnNewNote" class="btn btn-link"><i class="bi bi-box-arrow-down"></i>New note</button>
-            <button id="btnDelete" class="btn btn-link"><i class="bi bi-box-arrow-down"></i>Delete</button>
-            <button id="btnExport" class="btn btn-link"><i class="bi bi-box-arrow-down"></i>Export</button>
-        </div>    
+          <div>
+              <button id="btnNewNote" class="btn btn-link"><i class="bi bi-box-arrow-down"></i>New note</button>
+              <button id="btnDelete" class="btn btn-link"><i class="bi bi-box-arrow-down"></i>Delete</button>
+              <button id="btnExport" class="btn btn-link"><i class="bi bi-box-arrow-down"></i>Export</button>
+          </div>    
         </div>
+        
+        <!-- Title textbox and note body textarea -->
+        <input id="txtNoteTitle" type="text" class="form-control border-0 mb-1" placeholder="Note title..." aria-describedby="inputGroup-sizing-sm">
+        <textarea id="txtNoteBody" class="form-control border-0" placeholder="Note body..." rows="10"></textarea>
     </div>
 
     <!-- FOOTER -->
