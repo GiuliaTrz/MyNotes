@@ -61,3 +61,20 @@ btnNewNote.onclick = onbtnNewNoteClicked;
 btnDelete.onclick =  onbtnDeleteClicked;
 btnExport.onclick = onbtnExportClicked;
 btnHome.onclick = onbtnHomeClicked;
+
+/*
+Note class (model)
+*/
+class Note {
+    /**
+     * Creates a new Note instance.
+     * 
+     * @param {string} title the note title
+     * @param {string} body  the note body
+     */
+    constructor(title, body){
+        this.title = title;
+        this.body = body;
+        this.timestamp = formatDate(new Date());
+    }
+}
