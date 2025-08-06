@@ -52,4 +52,15 @@ class LocalStorageDB {
     _saveDB(db){
         localStorage.setItem(this.dbName, JSON.stringify(db));
     }
+
+    /**
+     * Stores an object using the key and the value
+     * @param {string} key the key used to store the object 
+     * @param {*} value the value we want to archive
+     */
+    set(key, value){
+        const db = this._getDB();
+        db.data[key]= value;
+        this._saveDB(db);
+    }
 }
