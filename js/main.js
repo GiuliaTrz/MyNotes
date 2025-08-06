@@ -40,7 +40,8 @@ function onbtnHomeClicked(){
 }
 
 function onbtnNewNoteClicked(){
-    alert("New note!");
+    var note = new Note(txtNoteTitle.value, txtNoteBody.value);
+    alert(JSON.stringify(note));
 }
 
 function onbtnDeleteClicked(){
