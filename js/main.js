@@ -1,6 +1,8 @@
 /*
     App Elements
 */
+
+const storage = new LocalStorageDB("MyNotes");
 const btnAddNote = document.getElementById("btnAddNote");
 const notesBox = document.getElementById("notesBox");
 const btnExportAll = document.getElementById("btnExportAll");
