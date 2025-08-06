@@ -27,6 +27,8 @@ function formatDate(date){
 function onbtnAddNoteClicked(){
     editorBox.classList.remove("d-none"); // Show the editor
     notesBox.classList.add("d-none"); // Hide the notes list
+    btnExportAll.classList.add("d-none"); //hides the export all button
+    btnAddNote.classList.add("d-none"); //hides the "add note" button
 }
 
 function onbtnExportAllClicked(){
@@ -37,6 +39,8 @@ function onbtnExportAllClicked(){
 function onbtnHomeClicked(){
     editorBox.classList.add("d-none"); //Hide the editor
     notesBox.classList.remove("d-none") // Show the notes list
+    btnExportAll.classList.remove("d-none"); //shows the export all button
+    btnAddNote.classList.remove("d-none"); //shows the "add note" button
 }
 
 function onbtnNewNoteClicked(){
