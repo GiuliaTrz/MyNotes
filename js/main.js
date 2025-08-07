@@ -47,7 +47,8 @@ function onbtnHomeClicked(){
 
 function onbtnNewNoteClicked(){
     var note = new Note(txtNoteTitle.value, txtNoteBody.value);
-    alert(JSON.stringify(note));
+    let uuid = self.crypto.randomUUID();
+    storage.save(uuid, note);
 }
 
 function onbtnDeleteClicked(){
