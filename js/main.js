@@ -17,12 +17,19 @@ const btnDelete  = document.getElementById("btnDelete");
 const btnExport  = document.getElementById("btnExport");
 const txtNoteTitle = document.getElementById("txtNoteTitle");
 const txtnoteDate  = document.getElementById("txtnoteDate");
+const txtNoteBody  = document.getElementById("txtNoteBody");
 
-const allNotes = storage.getAll();
+refreshNotes();
 
-Object.keys(allNotes).forEach(key => {
-  addNoteToList(key, allNotes[key]);
-});
+function refreshNotes(){
+    const notesBox = document.getElementById("notesBox");
+    notesBox.innerHTML = "";
+
+    const allNotes = storage.getAll();
+    Object.keys(allNotes).forEach(key => {
+      addNoteToList(key, allNotes[key]);
+    });
+}
 
 /**
  * Method called for each note in the database.
@@ -32,6 +39,8 @@ Object.keys(allNotes).forEach(key => {
  * @param {*} note The Note Object
  */
 function addNoteToList(key, note) {
+  const notesBox = document.getElementById("notesBox");
+
   const noteDiv = document.createElement("div");
   noteDiv.setAttribute("id",key);
   noteDiv.setAttribute("class","d-flex justify-content-between py-2 note-item");
@@ -50,8 +59,6 @@ function addNoteToList(key, note) {
   noteDiv.appendChild(noteTitle);
   noteDiv.appendChild(noteDate);
 
-
-  const notesBox = document.getElementById("notesBox");
   notesBox.appendChild(noteDiv);
 }
 
@@ -60,7 +67,12 @@ function addNoteToList(key, note) {
  * @param {*} key 
  * @param {*} note 
  */
-function onNoteClick (key, note){ alert(JSON.stringify(storage.get(key))); }
+function onNoteClick(key, note){ 
+    console.info(JSON.stringify(storage.get(key))); 
+    txtNoteTitle.value = note.title;
+    txtNoteBody.value = note.body;
+    showEditor();
+}
 
 // Converts the date object to a specific date format 
 function formatDate(date){
@@ -71,6 +83,12 @@ function formatDate(date){
     BUTTON EVENTS
 */
 function onbtnAddNoteClicked(){
+    txtNoteTitle.value = "";
+    txtNoteBody.value = "";
+    showEditor();
+}
+
+function showEditor(){
     editorBox.classList.remove("d-none"); // Show the editor
     notesBox.classList.add("d-none"); // Hide the notes list
     btnExportAll.classList.add("d-none"); //hides the export all button
@@ -90,9 +108,10 @@ function onbtnHomeClicked(){
 }
 
 function onbtnNewNoteClicked(){
-    var note = new Note(txtNoteTitle.value, txtnoteDate.value);
+    var note = new Note(txtNoteTitle.value, txtNoteBody.value);
     let uuid = self.crypto.randomUUID();
     storage.save(uuid, note);
+    refreshNotes();
 }
 
 function onbtnDeleteClicked(){
