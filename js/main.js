@@ -45,12 +45,22 @@ function addNoteToList(key, note) {
   noteTitle.innerText = note.title;
   noteDate.innerText = note.timestamp;
 
+  noteTitle.onclick = function(){ onNoteClick(key,note)};
+
   noteDiv.appendChild(noteTitle);
   noteDiv.appendChild(noteDate);
+
 
   const notesBox = document.getElementById("notesBox");
   notesBox.appendChild(noteDiv);
 }
+
+/**
+ * Gets note data and opens the editor
+ * @param {*} key 
+ * @param {*} note 
+ */
+function onNoteClick (key, note){ alert(JSON.stringify(storage.get(key))); }
 
 // Converts the date object to a specific date format 
 function formatDate(date){
