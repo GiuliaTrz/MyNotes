@@ -73,7 +73,6 @@ function addNoteToList(key, note) {
 function onNoteClick(key, note){ 
     courrentNoteObj = note;
     courrentNoteKey = key;
-    console.info(JSON.stringify(storage.get(key))); 
     txtNoteTitle.value = note.title;
     txtNoteBody.value = note.body;
     showEditor();
@@ -118,8 +117,14 @@ function onbtnHomeClicked(){
 
 function onbtnNewNoteClicked(){
     var note = new Note(txtNoteTitle.value, txtNoteBody.value);
-    let uuid = self.crypto.randomUUID();
-    storage.save(uuid, note);
+
+    if(courrentNoteKey != null){ // update existing note
+        storage.save(courrentNoteKey, note);
+    }else { // new note
+        let uuid = self.crypto.randomUUID();
+        storage.save(uuid, note);
+    }
+
     refreshNotes();
 }
 
@@ -135,7 +140,7 @@ function onbtnDeleteClicked(){
 
 function onbtnExportClicked(){
     console.info("Note title: " + txtNoteTitle.value);
-    console.info("Note body: " + txtnoteDate.value);
+    console.info("Note body: " + txtNoteBody.value);
 }
 
 // Attach events
