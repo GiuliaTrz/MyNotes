@@ -19,6 +19,9 @@ const txtNoteTitle = document.getElementById("txtNoteTitle");
 const txtnoteDate  = document.getElementById("txtnoteDate");
 const txtNoteBody  = document.getElementById("txtNoteBody");
 
+var courrentNoteKey = null;
+var courrentNoteObj = null;
+
 refreshNotes();
 
 function refreshNotes(){
@@ -68,6 +71,8 @@ function addNoteToList(key, note) {
  * @param {*} note 
  */
 function onNoteClick(key, note){ 
+    courrentNoteObj = note;
+    courrentNoteKey = key;
     console.info(JSON.stringify(storage.get(key))); 
     txtNoteTitle.value = note.title;
     txtNoteBody.value = note.body;
@@ -95,16 +100,20 @@ function showEditor(){
     btnAddNote.classList.add("d-none"); //hides the "add note" button
 }
 
+function hideEditor(){
+    editorBox.classList.add("d-none"); //Hide the editor
+    notesBox.classList.remove("d-none") // Show the notes list
+    btnExportAll.classList.remove("d-none"); //shows the export all button
+    btnAddNote.classList.remove("d-none"); //shows the "add note" button
+}
+
 function onbtnExportAllClicked(){
     alert("Export all button clicked!");
 }
 
 // - Editor buttons
 function onbtnHomeClicked(){
-    editorBox.classList.add("d-none"); //Hide the editor
-    notesBox.classList.remove("d-none") // Show the notes list
-    btnExportAll.classList.remove("d-none"); //shows the export all button
-    btnAddNote.classList.remove("d-none"); //shows the "add note" button
+    hideEditor();
 }
 
 function onbtnNewNoteClicked(){
@@ -115,7 +124,13 @@ function onbtnNewNoteClicked(){
 }
 
 function onbtnDeleteClicked(){
-    alert("Note deleted!");
+    if(courrentNoteKey != null){
+        if(storage.delete(courrentNoteKey)){
+            refreshNotes();
+            alert("Note deleted!");
+            hideEditor();
+        }
+    }
 }
 
 function onbtnExportClicked(){
