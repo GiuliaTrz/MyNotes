@@ -18,6 +18,17 @@ const btnExport  = document.getElementById("btnExport");
 const txtNoteTitle = document.getElementById("txtNoteTitle");
 const txtNoteBody  = document.getElementById("txtNoteBody");
 
+const allNotes = storage.getAll();
+
+Object.keys(allNotes).forEach(key => {
+  addNoteToList(allNotes[key]);
+});
+
+
+function addNoteToList(note) {
+  alert(JSON.stringify(note));
+}
+
 // Converts the date object to a specific date format 
 function formatDate(date){
     return date.toLocaleDateString();
