@@ -107,7 +107,8 @@ function hideEditor(){
 }
 
 function onbtnExportAllClicked(){
-    alert("Export all button clicked!");
+    var fileName = "MyNotes_" + formatDate(new Date()).replace("-","_") + ".json";
+    download(fileName, storage.serialize());
 }
 
 // - Editor buttons
@@ -139,8 +140,25 @@ function onbtnDeleteClicked(){
 }
 
 function onbtnExportClicked(){
-    console.info("Note title: " + txtNoteTitle.value);
-    console.info("Note body: " + txtNoteBody.value);
+    var fileName = txtNoteTitle.value + ".txt";
+    var noteBody = txtNoteBody.value;    
+    download(fileName, noteBody);
+}
+
+// This function allow the user to create a file in memory and download it
+function download(filename, text) {
+    var element = document.createElement('a');
+
+    // Generates the download link
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
 }
 
 // Attach events
