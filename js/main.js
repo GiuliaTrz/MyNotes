@@ -18,6 +18,7 @@ const btnExport  = document.getElementById("btnExport");
 const txtNoteTitle = document.getElementById("txtNoteTitle");
 const txtnoteDate  = document.getElementById("txtnoteDate");
 const txtNoteBody  = document.getElementById("txtNoteBody");
+const btnImportAll = document.getElementById("btnImportAll");
 
 var courrentNoteKey = null;
 var courrentNoteObj = null;
@@ -145,6 +146,10 @@ function onbtnExportClicked(){
     download(fileName, noteBody);
 }
 
+function onbtnImportAllClicked(){
+    alert("IMPORT ALL");
+}
+
 // This function allow the user to create a file in memory and download it
 function download(filename, text) {
     var element = document.createElement('a');
@@ -164,12 +169,14 @@ function download(filename, text) {
 // Attach events
 btnAddNote.onclick = onbtnAddNoteClicked;
 btnExportAll.onclick = onbtnExportAllClicked;
+btnImportAll.onclick =  onbtnImportAllClicked;
 
 // - Editor buttons
 btnNewNote.onclick = onbtnNewNoteClicked;
 btnDelete.onclick =  onbtnDeleteClicked;
 btnExport.onclick = onbtnExportClicked;
 btnHome.onclick = onbtnHomeClicked;
+
 
 /*
 Note class (model)
