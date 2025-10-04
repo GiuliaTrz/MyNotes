@@ -1,13 +1,33 @@
 :root {
     --bg-color:  #CADBC0;
     --textnote-color:  #413620;
+    --padding-large: 80px;
+    --font: 'Courier New', monospace;
+}
+
+#appTitle {
+  padding-top: var(--padding-large);
+  font-family: var(--font);
 }
 
 body {
   background-color: var(--bg-color) !important;
 }
 
+#footer {
+  padding-bottom: var(--padding-large);
+  font-family: var(--font);
+}
+
 .note-item{
+    font-family: var(--font);
     color: var(--textnote-color);
     border-bottom: 1px solid var(--textnote-color)!important;
+}
+
+#txtNoteTitle{
+  font-family: var(--font);
+}
+#txtNoteBody{
+  font-family: var(--font);
 }
