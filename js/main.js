@@ -8,7 +8,7 @@ const notesBox = document.getElementById("notesBox");
 const btnExportAll = document.getElementById("btnExportAll");
 const btnImportAll = document.getElementById("btnImportAll");
 const appTitle = document.getElementById("appTitle");
-
+const fileInput = document.getElementById('fileInput');
 
 /*
     Editor controls
@@ -153,8 +153,29 @@ function onbtnExportClicked(){
     download(fileName, noteBody);
 }
 
+/**
+ * loadNotes loads the content of the notes (the content of the file .json)
+ * @param {*} file 
+ */
+function loadNotes(file){
+    const fileContent = file.target.result;
+    alert("Contenuto del file:\n" + fileContent);
+}
+
 function onbtnImportAllClicked(){
-    alert("IMPORT ALL");
+    
+      const file = fileInput.files[0];
+      
+      if (file) {
+        const reader = new FileReader();
+        
+        // Function that loads the notes when the file is selected 
+        reader.onload = loadNotes;
+        
+        // Reads the file as text
+        reader.readAsText(file);
+    } 
+
 }
 
 // This function allow the user to create a file in memory and download it
@@ -176,7 +197,7 @@ function download(filename, text) {
 // Attach events
 btnAddNote.onclick = onbtnAddNoteClicked;
 btnExportAll.onclick = onbtnExportAllClicked;
-btnImportAll.onclick =  onbtnImportAllClicked;
+//btnImportAll.onclick =  onbtnImportAllClicked;
 
 // - Editor buttons
 btnNewNote.onclick = onbtnNewNoteClicked;
