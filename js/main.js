@@ -10,6 +10,7 @@ const btnImportAll = document.getElementById("btnImportAll");
 const appTitle = document.getElementById("appTitle");
 const fileInput = document.getElementById('fileInput');
 
+
 /*
     Editor controls
 */
@@ -121,6 +122,8 @@ function onbtnExportAllClicked(){
 
 // - Editor buttons
 function onbtnHomeClicked(){
+    courrentNoteKey = null; // Resets the courrent note 
+    courrentNoteObj = null; // Resets the courrent note
     hideEditor();
 }
 
@@ -158,8 +161,27 @@ function onbtnExportClicked(){
  * @param {*} file 
  */
 function loadNotes(file){
-    const fileContent = file.target.result;
-    alert("Contenuto del file:\n" + fileContent);
+    const fileContent = file.target.result; // JSON content (String)
+    var db = JSON.parse(fileContent); // Parses the full database dump
+    var notes = Object.values(db.data); // Converts the JSON Object to an array of notes (removing the ID)
+
+   notes.forEach(addNoteToDb); // Load the notes
+   refreshNotes(); // Refresh the notes list
+   alert("Loaded " + notes.length + " Notes!");
+}
+
+/**
+ * This method is used only in the loadNotes forEach
+ * to load a single note into the database
+ * 
+ * The UUID is generated randomly, the note timestamp is selected
+ * from the source note
+ * @param {Note} note 
+ */
+function addNoteToDb(note){
+    var note = new Note(note.title, note.body, note.timestamp);
+    let uuid = self.crypto.randomUUID();
+    storage.save(uuid, note);
 }
 
 function onbtnImportAllClicked(){
@@ -197,7 +219,6 @@ function download(filename, text) {
 // Attach events
 btnAddNote.onclick = onbtnAddNoteClicked;
 btnExportAll.onclick = onbtnExportAllClicked;
-//btnImportAll.onclick =  onbtnImportAllClicked;
 
 // - Editor buttons
 btnNewNote.onclick = onbtnNewNoteClicked;
@@ -214,11 +235,12 @@ class Note {
      * Creates a new Note instance.
      * 
      * @param {string} title the note title
-     * @param {string} body  the note body
+     * @param {string} body the note body
+     * @param {string} [data] the note creation date (optional)
      */
-    constructor(title, body){
+    constructor(title, body, data = null) {
         this.title = title;
         this.body = body;
-        this.timestamp = formatDate(new Date());
+        this.timestamp = data ? data : formatDate(new Date());
     }
 }
