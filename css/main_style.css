@@ -31,3 +31,7 @@ body {
 #txtNoteBody{
   font-family: var(--font);
 }
+
+#icon-font {
+  font-size: 30px;
+}

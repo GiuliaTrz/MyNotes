@@ -6,6 +6,9 @@ const storage = new LocalStorageDB("MyNotes");
 const btnAddNote = document.getElementById("btnAddNote");
 const notesBox = document.getElementById("notesBox");
 const btnExportAll = document.getElementById("btnExportAll");
+const btnImportAll = document.getElementById("btnImportAll");
+const appTitle = document.getElementById("appTitle");
+
 
 /*
     Editor controls
@@ -18,7 +21,7 @@ const btnExport  = document.getElementById("btnExport");
 const txtNoteTitle = document.getElementById("txtNoteTitle");
 const txtnoteDate  = document.getElementById("txtnoteDate");
 const txtNoteBody  = document.getElementById("txtNoteBody");
-const btnImportAll = document.getElementById("btnImportAll");
+
 
 var courrentNoteKey = null;
 var courrentNoteObj = null;
@@ -98,6 +101,8 @@ function showEditor(){
     notesBox.classList.add("d-none"); // Hide the notes list
     btnExportAll.classList.add("d-none"); //hides the export all button
     btnAddNote.classList.add("d-none"); //hides the "add note" button
+    btnImportAll.classList.add("d-none"); // hides the import all button
+    appTitle.classList.add("d-none"); // hides the app title
 }
 
 function hideEditor(){
@@ -105,6 +110,8 @@ function hideEditor(){
     notesBox.classList.remove("d-none") // Show the notes list
     btnExportAll.classList.remove("d-none"); //shows the export all button
     btnAddNote.classList.remove("d-none"); //shows the "add note" button
+    btnImportAll.classList.remove("d-none"); // shows the import all button
+    appTitle.classList.remove("d-none"); // shows the app title
 }
 
 function onbtnExportAllClicked(){
