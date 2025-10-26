@@ -10,10 +10,6 @@
   font-family: var(--font);
 }
 
-body {
-  background-color: var(--bg-color) !important;
-}
-
 #footer {
   padding-bottom: var(--padding-large);
   font-family: var(--font);
@@ -21,7 +17,6 @@ body {
 
 .note-item{
     font-family: var(--font);
-    color: var(--textnote-color);
     border-bottom: 1px solid var(--textnote-color)!important;
 }
 

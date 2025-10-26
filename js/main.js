@@ -3,6 +3,7 @@
 */
 
 const storage = new LocalStorageDB("MyNotes");
+const settingsDb = new LocalStorageDB("settings");
 const btnAddNote = document.getElementById("btnAddNote");
 const notesBox = document.getElementById("notesBox");
 const btnExportAll = document.getElementById("btnExportAll");
@@ -29,7 +30,7 @@ const txtNoteBody  = document.getElementById("txtNoteBody");
 var currentNoteKey = null;
 var currentNoteObj = null;
 var currentTheme = "dark";
-
+loadTheme(currentTheme);
 refreshNotes();
 
 function refreshNotes(){
@@ -42,19 +43,37 @@ function refreshNotes(){
     });
 }
 
+function loadTheme(){
+    if(currentTheme == "dark"){
+        btnThemeToggle_Moon.classList.remove("d-none");
+        btnThemeToggle_Sun.classList.add("d-none");
+        document.documentElement.setAttribute("data-bs-theme","dark");
+    }else if(currentTheme == "light"){
+        btnThemeToggle_Moon.classList.add("d-none");
+        btnThemeToggle_Sun.classList.remove("d-none");
+        document.documentElement.setAttribute("data-bs-theme","light");
+    }
+}
+
 function switchTheme(){
     if(currentTheme == "dark"){
         // Sets the light theme
-        btnThemeToggle_Moon.classList.remove("d-none");
-        btnThemeToggle_Sun.classList.add("d-none");
         currentTheme = "light";
+        
     }
     else if(currentTheme == "light"){
         // Sets the dark theme
-        btnThemeToggle_Moon.classList.add("d-none");
-        btnThemeToggle_Sun.classList.remove("d-none");
         currentTheme = "dark";
     }
+    loadTheme();
+}
+
+function setSetting(key, value) {
+  settingsDb.set(key,{value});
+}
+
+function getSetting(key) {
+    return settingsDb.get(key);
 }
 
 /**
