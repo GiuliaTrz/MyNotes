@@ -9,7 +9,9 @@ const btnExportAll = document.getElementById("btnExportAll");
 const btnImportAll = document.getElementById("btnImportAll");
 const appTitle = document.getElementById("appTitle");
 const fileInput = document.getElementById('fileInput');
-
+const btnThemeToggle = document.getElementById("btnThemeToggle");
+const btnThemeToggle_Moon = document.getElementById("btnThemeToggle_Moon");
+const btnThemeToggle_Sun = document.getElementById("btnThemeToggle_Sun");
 
 /*
     Editor controls
@@ -24,8 +26,9 @@ const txtnoteDate  = document.getElementById("txtnoteDate");
 const txtNoteBody  = document.getElementById("txtNoteBody");
 
 
-var courrentNoteKey = null;
-var courrentNoteObj = null;
+var currentNoteKey = null;
+var currentNoteObj = null;
+var currentTheme = "dark";
 
 refreshNotes();
 
@@ -37,6 +40,21 @@ function refreshNotes(){
     Object.keys(allNotes).forEach(key => {
       addNoteToList(key, allNotes[key]);
     });
+}
+
+function switchTheme(){
+    if(currentTheme == "dark"){
+        // Sets the light theme
+        btnThemeToggle_Moon.classList.remove("d-none");
+        btnThemeToggle_Sun.classList.add("d-none");
+        currentTheme = "light";
+    }
+    else if(currentTheme == "light"){
+        // Sets the dark theme
+        btnThemeToggle_Moon.classList.add("d-none");
+        btnThemeToggle_Sun.classList.remove("d-none");
+        currentTheme = "dark";
+    }
 }
 
 /**
@@ -76,8 +94,8 @@ function addNoteToList(key, note) {
  * @param {*} note 
  */
 function onNoteClick(key, note){ 
-    courrentNoteObj = note;
-    courrentNoteKey = key;
+    currentNoteObj = note;
+    currentNoteKey = key;
     txtNoteTitle.value = note.title;
     txtNoteBody.value = note.body;
     showEditor();
@@ -122,16 +140,16 @@ function onbtnExportAllClicked(){
 
 // - Editor buttons
 function onbtnHomeClicked(){
-    courrentNoteKey = null; // Resets the courrent note 
-    courrentNoteObj = null; // Resets the courrent note
+    currentNoteKey = null; // Resets the courrent note 
+    currentNoteObj = null; // Resets the courrent note
     hideEditor();
 }
 
 function onbtnNewNoteClicked(){
     var note = new Note(txtNoteTitle.value, txtNoteBody.value);
 
-    if(courrentNoteKey != null){ // update existing note
-        storage.save(courrentNoteKey, note);
+    if(currentNoteKey != null){ // update existing note
+        storage.save(currentNoteKey, note);
     }else { // new note
         let uuid = self.crypto.randomUUID();
         storage.save(uuid, note);
@@ -141,8 +159,8 @@ function onbtnNewNoteClicked(){
 }
 
 function onbtnDeleteClicked(){
-    if(courrentNoteKey != null){
-        if(storage.delete(courrentNoteKey)){
+    if(currentNoteKey != null){
+        if(storage.delete(currentNoteKey)){
             refreshNotes();
             alert("Note deleted!");
             hideEditor();
@@ -219,6 +237,7 @@ function download(filename, text) {
 // Attach events
 btnAddNote.onclick = onbtnAddNoteClicked;
 btnExportAll.onclick = onbtnExportAllClicked;
+btnThemeToggle.onclick = switchTheme;
 
 // - Editor buttons
 btnNewNote.onclick = onbtnNewNoteClicked;
