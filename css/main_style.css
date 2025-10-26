@@ -2,7 +2,9 @@
     --bg-color:  #CADBC0;
     --textnote-color:  #413620;
     --padding-large: 80px;
-    --font: 'Courier New', monospace;
+    --font: 'Lora', serif;
+    --icon-color: #F5EBE0;
+    --font-size: 22px;
 }
 
 #appTitle {
@@ -18,15 +20,28 @@
 .note-item{
     font-family: var(--font);
     border-bottom: 1px solid var(--textnote-color)!important;
+    font-size: var(--font-size);
 }
 
 #txtNoteTitle{
   font-family: var(--font);
+  font-size: var(--font-size);
 }
 #txtNoteBody{
   font-family: var(--font);
+  font-size: var(--font-size);
+}
+
+#editorBox {
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .icon-font {
   font-size: 30px;
+  color: var(--icon-color);
 }

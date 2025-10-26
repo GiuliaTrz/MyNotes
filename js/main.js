@@ -48,10 +48,12 @@ function loadTheme(){
         btnThemeToggle_Moon.classList.remove("d-none");
         btnThemeToggle_Sun.classList.add("d-none");
         document.documentElement.setAttribute("data-bs-theme","dark");
+        document.documentElement.style.setProperty("--icon-color", "#F5EBE0");
     }else if(currentTheme == "light"){
         btnThemeToggle_Moon.classList.add("d-none");
         btnThemeToggle_Sun.classList.remove("d-none");
         document.documentElement.setAttribute("data-bs-theme","light");
+        document.documentElement.style.setProperty("--icon-color", "#121417");
     }
 }
 
