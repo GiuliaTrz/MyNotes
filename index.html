@@ -15,8 +15,10 @@
     <!--Top command bar-->
     <div id="topBar" class="container text-center">
       <div class="d-flex justify-content-end">
-        <button id="btnAddNote" class="btn btn-link"><i id="icon-font" class="bi bi-plus-circle"></i></button>
+        <button id="btnAddNote" class="btn btn-link"><i class="bi bi-plus-circle icon-font"></i></button>
+        <button id="btnThemeToggle" class="btn btn-link"><i class="bi bi-moon-fill icon-font"></i></i></button>
       </div>
+      
     </div>
     
     <!-- Centered title -->
@@ -30,8 +32,8 @@
     <!-- Export all button -->
     <div id="exportBox" class="container text-center">
       <div class="d-flex justify-content-end">
-        <button id="btnExportAll" class="btn btn-link"><i id="icon-font" class="bi bi-box-arrow-down"></i></button>
-        <button onclick="document.getElementById('fileInput').click()" id="btnImportAll" class="btn btn-link"><i id="icon-font" class="bi bi-upload"></i></button>
+        <button id="btnExportAll" class="btn btn-link"><i class="bi bi-box-arrow-down icon-font"></i></button>
+        <button onclick="document.getElementById('fileInput').click()" id="btnImportAll" class="btn btn-link"><i class="bi bi-upload icon-font"></i></button>
         <input type="file" id="fileInput" style="display: none" onchange="onbtnImportAllClicked()">
       </div>      
     </div>
@@ -40,11 +42,11 @@
     <div id="editorBox" class="container-sm d-none">
         <!--Top bar controls-->
         <div class="d-flex justify-content-between">
-            <button id="btnHome" class="btn btn-link"><i id="icon-font" class="bi bi-house" id="icon-font"></i></button>
+            <button id="btnHome" class="btn btn-link"><i class="bi bi-house icon-font"></i></button>
           <div>
-              <button id="btnNewNote" class="btn btn-link"><i id="icon-font" class="bi bi-floppy"></i></button>
-              <button id="btnDelete" class="btn btn-link"><i id="icon-font" class="bi bi-trash3"></i></button>
-              <button id="btnExport" class="btn btn-link"><i id="icon-font" class="bi bi-box-arrow-down"></i></button>
+              <button id="btnNewNote" class="btn btn-link"><i class="bi bi-floppy icon-font"></i></button>
+              <button id="btnDelete" class="btn btn-link"><i class="bi bi-trash3 icon-font"></i></button>
+              <button id="btnExport" class="btn btn-link"><i class="bi bi-box-arrow-down icon-font"></i></button>
           </div>    
         </div>
         
