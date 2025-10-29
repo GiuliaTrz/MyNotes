@@ -29,8 +29,14 @@ const txtNoteBody  = document.getElementById("txtNoteBody");
 
 var currentNoteKey = null;
 var currentNoteObj = null;
-var currentTheme = "dark";
-loadTheme(currentTheme);
+
+// Loads the saved theme from LocalStorage
+var savedTheme = getSetting("theme"); 
+
+// sets "dark" as the default theme if savedTheme is blank
+var currentTheme = savedTheme ? savedTheme.value : "dark";
+
+loadTheme();
 refreshNotes();
 
 function refreshNotes(){
@@ -43,6 +49,9 @@ function refreshNotes(){
     });
 }
 
+/**
+ * Apply the currentTheme
+ */
 function loadTheme(){
     if(currentTheme == "dark"){
         btnThemeToggle_Moon.classList.remove("d-none");
@@ -57,23 +66,38 @@ function loadTheme(){
     }
 }
 
+/**
+ * Event for btnThemeToggle
+ */
 function switchTheme(){
     if(currentTheme == "dark"){
         // Sets the light theme
         currentTheme = "light";
-        
     }
     else if(currentTheme == "light"){
         // Sets the dark theme
         currentTheme = "dark";
     }
-    loadTheme();
+    setSetting("theme",currentTheme); // Saves the theme
+    loadTheme(); // Updates UI
 }
 
+/**
+ * Saves the value of a specific application setting
+ * 
+ * Es: theme = "dark"
+ * @param {*} key the application setting key
+ * @param {*} value the application setting value
+ */
 function setSetting(key, value) {
   settingsDb.set(key,{value});
 }
 
+/**
+ * Fetch the setting with the specified key
+ * @param {*} key the application setting key
+ * @returns the application setting value
+ */
 function getSetting(key) {
     return settingsDb.get(key);
 }
