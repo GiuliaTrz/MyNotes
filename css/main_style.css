@@ -7,14 +7,19 @@
     --font-size: 22px;
 }
 
+:root[data-bs-theme="dark"] {
+  --bs-body-bg: #141414;
+}
+
 #appTitle {
   padding-top: var(--padding-large);
   font-family: var(--font);
 }
 
 #footer {
-  padding-bottom: var(--padding-large);
+  padding-top: var(--padding-large);
   font-family: var(--font);
+  position: relative;
 }
 
 .note-item{
@@ -27,13 +32,14 @@
   font-family: var(--font);
   font-size: var(--font-size);
 }
+
 #txtNoteBody{
   font-family: var(--font);
   font-size: var(--font-size);
 }
 
 #editorBox {
-  border: 2px solid red;
+  border: 2px solid rgb(255, 85, 0);
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -42,6 +48,10 @@
 }
 
 .icon-font {
-  font-size: 30px;
+  font-size: 25px;
   color: var(--icon-color);
+}
+
+#exportBox{
+  padding-top: var(--padding-large);
 }
