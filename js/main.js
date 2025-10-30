@@ -201,6 +201,8 @@ function onbtnNewNoteClicked(){
     }
 
     refreshNotes();
+    alert("Note added!");
+    hideEditor();
 }
 
 function onbtnDeleteClicked(){
