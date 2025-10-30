@@ -24,6 +24,10 @@ html, body {
   font-family: var(--font);
 }
 
+#topBar{
+  padding-top: 30px;
+}
+
 #footer {
   font-family: var(--font);
   margin-top: auto;
@@ -64,7 +68,12 @@ html, body {
 
 .icon-font {
   font-size: 25px;
+  opacity: 0.5;
   color: var(--icon-color);
+}
+
+.icon-font:hover {
+  opacity: 1;
 }
 
 #exportBox{
